@@ -1,4 +1,4 @@
-class DeviseTokenAuthCreateAdmins < ActiveRecord::Migration[5.0]
+class DeviseTokenAuthCreateAdmins < ActiveRecord::Migration[5.1]
   def change
     change_table :admins do |t|
       t.string :provider, :null => false, :default => 'email'

@@ -17,6 +17,7 @@ import { NewAdminSessionComponent } from './containers/new-admin-session/new-adm
 import { AuthGuard } from "./auth-guard";
 import { HeaderNameComponent } from "./ui/header-name/header-name.component";
 import { EventSearchPipe } from "./containers/event-list/event-search-pipe";
+import { EventService } from "./services/event.service";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { EventSearchPipe } from "./containers/event-list/event-search-pipe";
   ],
   providers: [
     Angular2TokenService,
-    AuthGuard
+    AuthGuard,
+    EventService
   ],
   bootstrap: [
     AppComponent

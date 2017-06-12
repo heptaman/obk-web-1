@@ -1,4 +1,4 @@
-class DeviseCreateVolunteers < ActiveRecord::Migration[5.0]
+class DeviseCreateVolunteers < ActiveRecord::Migration[5.1]
   def change
     create_table :volunteers do |t|
       ## Database authenticatable
@@ -8,6 +8,7 @@ class DeviseCreateVolunteers < ActiveRecord::Migration[5.0]
       t.string  :mobile_number   ,limit: 20
       t.string  :landline_number ,limit: 20
       t.date    :dob                         ,null: false
+      t.string  :gender          ,limit: 1   ,null: false
       t.string  :wwccn           ,limit: 15
       t.boolean :sub_newsletter              ,default: true
       t.string  :encrypted_password          ,null: false

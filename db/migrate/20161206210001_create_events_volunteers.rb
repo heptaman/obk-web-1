@@ -1,4 +1,4 @@
-class CreateEventsVolunteers < ActiveRecord::Migration[5.0]
+class CreateEventsVolunteers < ActiveRecord::Migration[5.1]
   def change
     create_join_table :events, :volunteers do |t|
       t.timestamps null: false

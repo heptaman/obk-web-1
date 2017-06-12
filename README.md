@@ -14,19 +14,20 @@ In order to make it very easy for anyone to find when they can help and put thei
 * Give the opportunity for students to be involved in a real project while enhancing their coding skils
 
 ## Stack / Config
-* Ruby 2.3.0
+* Ruby 2.3.4
 * Rails 5 (API mode)
-* Angular 2
+* Angular 4
 * PostgreSQL
 
 ## Quick setup
 1. Fork and clone the repository
 * `bundle install`
 * Make sure PostgreSQL is running
-* `rails db:create && rails db:migrate`
+* `rails db:create && rails db:migrate && rails db:seed`
 * `rails s`
 * Now the rails server should be running at `localhost:3000`
 * Go to the folder `client`
+* `npm install`
 * `npm start`
 * Now the angular app should be running at `localhost:4200`
 

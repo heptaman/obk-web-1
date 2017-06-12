@@ -1,13 +1,17 @@
 class Admin::EventsController < ApplicationController
   include Paginatable
-  before_action :authenticate_admin_admin!, except: [:create]
+  #  before_action :authenticate_admin_admin!, except: [:create]
   before_action :set_event, only: [:show, :update, :destroy]
 
   # GET /events
   def index
-    events = Event.all.page(params[:page])
+    events = Event
+      .joins('left outer join (select event_id, count(1) volunteer_count from events_volunteers group by event_id) e_v on e_v.event_id = events.id')
+      .select('events.id, events.title, events.description, coalesce(e_v.volunteer_count, 0) as volunteer_count, events.start_date, events.end_date')
+      .order(start_date: :desc)
+      .page(params[:page])
 
-    render json: events, meta: paginate(events)
+    render json: events, admin: true, meta: paginate(events)
   end
 
   # GET /events/1
@@ -38,6 +42,7 @@ class Admin::EventsController < ApplicationController
   # DELETE /events/1
   def destroy
     @event.destroy
+    render status: :ok
   end
 
   private

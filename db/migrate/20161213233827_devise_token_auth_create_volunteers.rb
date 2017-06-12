@@ -1,4 +1,4 @@
-class DeviseTokenAuthCreateVolunteers < ActiveRecord::Migration[5.0]
+class DeviseTokenAuthCreateVolunteers < ActiveRecord::Migration[5.1]
   def change
     change_table :volunteers do |t|
       t.string :provider, :null => false, :default => 'email'

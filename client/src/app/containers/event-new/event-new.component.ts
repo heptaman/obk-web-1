@@ -5,7 +5,7 @@ import {
   EventEmitter } from '@angular/core';
 import {Http} from "@angular/http";
 import { Router } from '@angular/router';
-
+declare var $: any;
 
 @Component({
   selector: 'app-event-new',
@@ -25,6 +25,10 @@ export class EventNewComponent implements OnInit {
   constructor(private http: Http, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    $('.datepicker').datepicker({ format: 'dd/mm/yyyy' });
   }
 
   createEvent() {
