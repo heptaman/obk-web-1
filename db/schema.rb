@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20161225083921) do
   create_table "events", force: :cascade do |t|
     t.string "title", limit: 80, null: false
     t.text "description"
-    t.datetime "start_date", null: false
-    t.datetime "end_date", null: false
+    t.datetime "start", null: false
+    t.datetime "finish", null: false
     t.integer "min_volunteers"
     t.integer "max_volunteers"
     t.datetime "created_at", null: false
@@ -62,10 +62,11 @@ ActiveRecord::Schema.define(version: 20161225083921) do
     t.string "last_name", limit: 40
     t.string "email", limit: 255, null: false
     t.string "mobile_number", limit: 20
-    t.string "landline_number", limit: 20
     t.date "dob", null: false
     t.string "gender", limit: 1, null: false
     t.string "wwccn", limit: 15
+    t.integer "wwccn_status", default: 0
+    t.date "wwccn_expiry_date"
     t.boolean "sub_newsletter", default: true
     t.string "encrypted_password", null: false
     t.string "reset_password_token"

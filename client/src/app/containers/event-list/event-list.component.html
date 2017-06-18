@@ -12,18 +12,20 @@
         <thead>
         <tr>
           <th>Event ID</th>
+          <th>Date</th>
           <th>Title</th>
           <th>Volunteers</th>
-          <th>Date</th>
+          <th>Spots Left</th>
           <th></th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let event of events">
           <td>{{ event.id }}</td>
+          <td>{{ event.start | date:'dd/MM/yyyy' }}</td>
           <td>{{ event.title }}</td>
           <td>{{ event.volunteer_count }}</td>
-          <td>{{ event.start_date | date:'dd/MM/yyyy' }}</td>
+          <td>{{ event.spots_left }}</td>
           <td>
             <a [routerLink]="['/events/' + event.id]" class="btn btn-default btn-sm">Edit</a> &nbsp;
             <a (click)="delete(event.id)" class="btn btn-default btn-sm">Delete</a>

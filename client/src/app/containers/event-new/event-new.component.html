@@ -16,24 +16,24 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="input-group">
-                <label for="eventStartDate" class="control-label">
+                <label for="eventStart" class="control-label">
                   Starts at <span class="text-red" title="Mandatory">*</span>
                 </label>
-                <input id="eventStartDate"
-                  name="newEventStartDate"
-                  [(ngModel)]="newEvent.start_date"
+                <input id="eventStart"
+                  name="newEventStart"
+                  [(ngModel)]="newEvent.start"
                   type="text"
                   class="form-control datepicker" />
               </div>
             </div>
             <div class="col-sm-6">
               <div class="input-group">
-                <label for="eventEndDate" class="control-label">
+                <label for="eventFinish" class="control-label">
                   Ends at <span class="text-red" title="Mandatory">*</span>
                 </label>
-                <input id="eventEndDate"
-                  name="newEventEndDate"
-                  [(ngModel)]="newEvent.end_date"
+                <input id="eventFinish"
+                  name="newEventFinish"
+                  [(ngModel)]="newEvent.finish"
                   type="text"
                   class="form-control datepicker" />
               </div>
@@ -49,6 +49,32 @@
               cols="30"
               rows="10"
               class="form-control"></textarea>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="input-group">
+                <label for="eventMinVolunteers" class="control-label">
+                  Minimum volunteers <span class="text-red" title="Mandatory">*</span>
+                </label>
+                <input id="eventMinVolunteers"
+                       name="newEventMinVolunteers"
+                       [(ngModel)]="newEvent.min_volunteers"
+                       type="number"
+                       class="form-control" />
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="input-group">
+                <label for="eventMaxVolunteers" class="control-label">
+                  Maximum volunteers <span class="text-red" title="Mandatory">*</span>
+                </label>
+                <input id="eventMaxVolunteers"
+                       name="newEventMaxVolunteers"
+                       [(ngModel)]="newEvent.max_volunteers"
+                       type="number"
+                       class="form-control" />
+              </div>
+            </div>
           </div>
         </div><!-- /.box-body -->
         <div class="box-footer">

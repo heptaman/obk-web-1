@@ -6,10 +6,11 @@ class DeviseCreateVolunteers < ActiveRecord::Migration[5.1]
       t.string  :last_name       ,limit: 40
       t.string  :email           ,limit: 255 ,null: false
       t.string  :mobile_number   ,limit: 20
-      t.string  :landline_number ,limit: 20
       t.date    :dob                         ,null: false
       t.string  :gender          ,limit: 1   ,null: false
       t.string  :wwccn           ,limit: 15
+      t.integer :wwccn_status                ,default: 0
+      t.date    :wwccn_expiry_date
       t.boolean :sub_newsletter              ,default: true
       t.string  :encrypted_password          ,null: false
 

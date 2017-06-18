@@ -1,6 +1,6 @@
 class VolunteersController < ApplicationController
   before_action :authenticate_volunteer!
-  before_action :set_volunteer, only: [:show, :profile, :update, :destroy]
+  before_action :set_volunteer, only: [:show, :profile, :update]
 
   # GET /volunteers
   def index
@@ -28,11 +28,6 @@ class VolunteersController < ApplicationController
     end
   end
 
-  # DELETE /volunteers/1
-  def destroy
-    @volunteer.destroy
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -43,6 +38,6 @@ class VolunteersController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def volunteer_params
     params.require(:volunteer).permit(:first_name, :last_name, :email, :mobile_number, :gender,
-                                      :landline_number, :dob, :wwccn, :sub_newsletter)
+                                      :dob, :sub_newsletter)
   end
 end

@@ -16,10 +16,13 @@ export class EventNewComponent implements OnInit {
   // @Output() createEvent = new EventEmitter();
 
   newEvent = {
+    id: null,
     title: "",
     description: "",
-    start_date: "",
-    end_date: ""
+    start: "",
+    finish: "",
+    min_volunteers: 0,
+    max_volunteers: 0
   };
 
   constructor(private http: Http, private router: Router) { }
@@ -32,9 +35,9 @@ export class EventNewComponent implements OnInit {
   }
 
   createEvent() {
-    const { title, description, start_date, end_date } = this.newEvent;
+    const { title, description, start, finish, min_volunteers, max_volunteers } = this.newEvent;
 
-    if (title && description && start_date && end_date) {
+    if (title && description && start && finish && min_volunteers && max_volunteers) {
       this.http.post("/api/admin/events", this.newEvent)
         //.map(res => res.json())
         .subscribe(
@@ -50,10 +53,13 @@ export class EventNewComponent implements OnInit {
 
   reset() {
     this.newEvent = {
+      id: null,
       title: "",
       description: "",
-      start_date: "",
-      end_date: ""
+      start: "",
+      finish: "",
+      min_volunteers: 0,
+      max_volunteers: 0
     };
   }
 

@@ -7,8 +7,10 @@ class Admin::EventsController < ApplicationController
   def index
     events = Event
       .joins('left outer join (select event_id, count(1) volunteer_count from events_volunteers group by event_id) e_v on e_v.event_id = events.id')
-      .select('events.id, events.title, events.description, coalesce(e_v.volunteer_count, 0) as volunteer_count, events.start_date, events.end_date')
-      .order(start_date: :desc)
+      .select('events.id, events.title, events.description, coalesce(e_v.volunteer_count, 0) as volunteer_count, ' \
+                  ' events.start, events.finish, events.min_volunteers, events.max_volunteers, ' \
+                  ' events.max_volunteers - coalesce(e_v.volunteer_count, 0) as spots_left')
+      .order(start: :desc)
       .page(params[:page])
 
     render json: events, admin: true, meta: paginate(events)
@@ -22,7 +24,7 @@ class Admin::EventsController < ApplicationController
   # POST /events
   def create
     @event = Event.new(event_params)
-
+    debugger
     if @event.save
       render json: @event, status: :created
     else
@@ -54,6 +56,6 @@ class Admin::EventsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def event_params
-    params.fetch(:event, {}).permit(:title, :description, :start_date, :end_date)
+    params.fetch(:event, {}).permit(:title, :description, :start, :finish, :min_volunteers, :max_volunteers)
   end
 end

@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   include Paginatable
   before_action :authenticate_volunteer!, except: [:index, :show]
-  before_action :set_event, only: [:show, :update, :destroy, :join, :resign]
+  before_action :set_event, only: [:show, :join, :resign]
 
   # GET /events
   def index
@@ -76,8 +76,4 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
-  def event_params
-    params.require(:event).permit(:title, :description, :start, :end)
-  end
 end

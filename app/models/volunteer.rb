@@ -21,6 +21,8 @@ class Volunteer < ApplicationRecord
       v.mobile_number = params[:mobile_number]
       v.gender = params[:gender]
       v.wwccn = params[:wwccn]
+      v.wwccn_status = params[:wwccn_status]
+      v.wwccn_expiry_date = params[:wwccn_expiry_date]
       v.save
     end
     v
