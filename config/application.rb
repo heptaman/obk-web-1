@@ -27,6 +27,9 @@ module ObkWeb
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
+    config.time_zone = 'Sydney'
+    config.active_record.default_timezone = :local
+
     config.generators do |g|
       g.test_framework  :rspec,
                         view_specs: false,
