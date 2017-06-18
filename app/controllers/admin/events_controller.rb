@@ -24,7 +24,7 @@ class Admin::EventsController < ApplicationController
   # POST /events
   def create
     @event = Event.new(event_params)
-    debugger
+    
     if @event.save
       render json: @event, status: :created
     else
